@@ -1,9 +1,8 @@
 package cn.x5456.initializer.base;
 
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,13 +19,11 @@ public abstract class AbstractInitInvoker {
 
     private final AbstractScriptExecutor scriptExecutor;
 
-    private final ResourcePatternResolver resourcePatternResolver;
+    private final ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
 
-    public AbstractInitInvoker(AbstractInitConfig initConfig, AbstractScriptExecutor scriptExecutor,
-                               ResourceLoader resourceLoader) {
+    public AbstractInitInvoker(AbstractInitConfig initConfig, AbstractScriptExecutor scriptExecutor) {
         this.initConfig = initConfig;
         this.scriptExecutor = scriptExecutor;
-        this.resourcePatternResolver = ResourcePatternUtils.getResourcePatternResolver(resourceLoader);
     }
 
     public void execute() {
@@ -50,7 +47,7 @@ public abstract class AbstractInitInvoker {
             try {
                 locationResources = resourcePatternResolver.getResources(location);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException(e.getMessage(), e);
             }
             resources.addAll(Arrays.asList(locationResources));
         }

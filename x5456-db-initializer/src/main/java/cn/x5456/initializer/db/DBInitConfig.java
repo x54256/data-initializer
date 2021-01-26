@@ -24,6 +24,8 @@ public class DBInitConfig extends AbstractInitConfig {
 
     private String dataSourceBeanName = "dataSource";
 
+    private List<DBInitConfig> multi;
+
     @Override
     protected boolean canExecute() {
         return mode == DataSourceInitializationMode.ALWAYS;
@@ -80,5 +82,13 @@ public class DBInitConfig extends AbstractInitConfig {
 
     public void setDataSourceBeanName(String dataSourceBeanName) {
         this.dataSourceBeanName = dataSourceBeanName;
+    }
+
+    public List<DBInitConfig> getMulti() {
+        return multi;
+    }
+
+    public void setMulti(List<DBInitConfig> multi) {
+        this.multi = multi;
     }
 }

@@ -5,13 +5,14 @@ spring:
     schema:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
 
 x5456:
   data:
     init:
       db:
-        mode: always
-        dbType: sqlite3
-        appName: db-test
+        multi:
+          - mode: always
+            dbType: sqlite3
+            appName: db-test

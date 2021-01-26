@@ -1,2 +1,7 @@
+# Application Listeners
+org.springframework.context.ApplicationListener=\
+cn.x5456.initializer.db.DBDataInitializer
+
+# Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 cn.x5456.initializer.db.DBInitAutoConfig
