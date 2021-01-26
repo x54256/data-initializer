@@ -2,8 +2,6 @@
  version=1.0.0
  remark=创建测试表
 */
-
-
 create table dcc_demo
 (
     id int not null
