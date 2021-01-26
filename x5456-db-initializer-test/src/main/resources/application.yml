@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:sqlite:test.db
+    driver-class-name: org.sqlite.JDBC
+    schema:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+x5456:
+  data:
+    init:
+      db:
+        mode: always
+        dbType: sqlite3
+        appName: db-test
